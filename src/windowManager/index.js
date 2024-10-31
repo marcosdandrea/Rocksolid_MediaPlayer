@@ -1,4 +1,3 @@
-const path = require("path")
 const { BrowserWindow } = require("electron")
 const { globals, CONSTANTS } = require("../globals")
 
@@ -11,8 +10,7 @@ const launchPlayerWindow = (display) => {
         show: false,
         alwaysOnTop: true,
         webPreferences: {
-            nodeIntegration: true,
-            contextIsolation: false
+            nodeIntegration: true
         }
     })
 
@@ -20,10 +18,12 @@ const launchPlayerWindow = (display) => {
     const url = globals.ENVIRONMENT == CONSTANTS.ENV_PRODUCTION
     ? globals.APP_URL
     : globals.VITE_DEV_SERVER
-    window.loadURL(path.join(url, String(display.id)))
+
+    window.loadURL(`${url}/${display.id}`)
 
     if (globals.ENVIRONMENT == CONSTANTS.ENV_DEVELOPMENT)
         window.webContents.openDevTools()
+
 
     window.webContents.on("did-finish-load", () => {
         window.show()

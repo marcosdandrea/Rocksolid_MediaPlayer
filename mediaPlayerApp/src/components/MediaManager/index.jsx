@@ -4,10 +4,12 @@ import useGetMediaFiles from "../../hooks/useGetMediaFiles";
 import Text from "../Text";
 import ScreenMessage from "../ScreenMessage";
 import VideoLayers from "../VideoLayer";
+import useGetDisplayID from "../../hooks/useGetDisplayID";
 
 const MediaManager = () => {
 
-    const displayID = window.location.pathname.substring(1)
+    const {displayID} = useGetDisplayID()
+    
     const showScreenIDTime = 1000
 
     const showScreenIDTimerRef = useRef(null)

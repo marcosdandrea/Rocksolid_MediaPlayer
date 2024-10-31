@@ -1,10 +1,11 @@
+import useGetDisplayID from "../../hooks/useGetDisplayID";
 import useGetSystemVersion from "../../hooks/useGetSystemVersion";
 import Logo from "../Logo";
 import Text, { fontFamilies } from "../Text";
 import "./style.css"
 
 const ScreenMessage = ({ text }) => {
-    const displayID = window.location.pathname.substring(1)
+    const {displayID} = useGetDisplayID()
 
     const { systemVersion } = useGetSystemVersion()
     const year = new Date().getFullYear()

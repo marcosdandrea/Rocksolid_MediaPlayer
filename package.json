@@ -1,5 +1,5 @@
 {
-  "name": "mediaplayer",
+  "name": "rocksolid",
   "version": "1.0.1",
   "description": "Simple media player for Raspberry",
   "email": "pesp@proyecciones.net",
@@ -7,6 +7,7 @@
   "scripts": {
     "vite-dev": "npm run dev --prefix ./mediaPlayerApp",
     "dev": "concurrently \"npm run vite-dev\" \"wait-on http://localhost:5173 && electron . --dev\"",
+    "build": "electron-builder",
     "build-linux": "electron-builder --linux --arm64"
   },
   "author": {
@@ -35,9 +36,7 @@
     "files": [
       "README.html",
       "src/**",
-      "index.js",
-      "!app/**",
-      "!logs/*.log"
+      "index.js"
     ],
     "asar": true,
     "linux": {
@@ -50,6 +49,12 @@
         }
       ],
       "category": "Utility"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
     }
+
   }
 }

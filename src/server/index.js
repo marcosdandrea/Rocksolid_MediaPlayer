@@ -21,6 +21,6 @@ app.use(cors(corsOptions))
 endpoints.bind(app)
 socket.bind(server)
 
-server.listen(globals.SERVER_PORT, () => {
+server.listen(globals.SERVER_PORT, "0.0.0.0", () => {
     logger.info(`listening on ${globals.SERVER_PORT}`);
 })
