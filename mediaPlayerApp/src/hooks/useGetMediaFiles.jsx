@@ -6,10 +6,11 @@ const useGetMediaFiles = (displayID) => {
     const [mediaFiles, setMediaFiles] = useState([])
     const [isFetching, setIsFetching] = useState(false)
 
-    const {emit, isConnected} = useContext(socketContext)
+    const { emit, isConnected } = useContext(socketContext)
 
     const handleOnGetMediaFiles = (data) => {
-        setMediaFiles(data)
+        if (data)
+            setMediaFiles(data)
         setIsFetching(false)
     }
 
@@ -22,10 +23,10 @@ const useGetMediaFiles = (displayID) => {
         })
     }
 
-    useEffect(()=>{
-        if(!isConnected) return;
+    useEffect(() => {
+        if (!isConnected) return;
         getMediaFiles()
-    },[isConnected])
+    }, [isConnected])
 
     return ({
         isFetching,
@@ -35,5 +36,5 @@ const useGetMediaFiles = (displayID) => {
 
 
 }
- 
+
 export default useGetMediaFiles;

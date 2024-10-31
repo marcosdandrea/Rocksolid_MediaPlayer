@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const MediaPlayer = ({ file, onMediaEnd, onError, loop }) => {
+const MediaPlayer = ({ layerIndex, canPlay, file, onMediaEnd, onError, onMediaLoaded, onPlaying, loop, opacity }) => {
     const videoRef = useRef(null)
     const [videoPath, setVideoPath] = useState(undefined)
 
@@ -15,30 +15,47 @@ const MediaPlayer = ({ file, onMediaEnd, onError, loop }) => {
     }, [file])
 
     const handleOnError = (e) => {
-        onError(e)
+        onError?.(e)
         console.error("Error loading video:", e.target)
     }
+
+    useEffect(()=>{
+        if (!canPlay) return
+        videoRef.current.play()
+    },[canPlay])
 
     useEffect(() => {
         if (!videoRef.current) return
 
-        videoRef.current.addEventListener('ended', onMediaEnd)
-        videoRef.current.addEventListener('error', handleOnError)
+        videoRef.current.addEventListener('ended', () => onMediaEnd(layerIndex))
+        videoRef.current.addEventListener('error', (e) => handleOnError(e, layerIndex))
+        videoRef.current.addEventListener('canplaythrough', () => onMediaLoaded(layerIndex))
+        videoRef.current.addEventListener('play', () => onPlaying(layerIndex))
 
         return () => {
-            videoRef.current.removeEventListener('ended', onMediaEnd)
-            videoRef.current.removeEventListener('error', handleOnError)
+            videoRef.current.removeEventListener('ended', () => onMediaEnd(layerIndex))
+            videoRef.current.removeEventListener('error', (e) => handleOnError(e, layerIndex))
+            videoRef.current.removeEventListener('canplaythrough', () => onMediaLoaded(layerIndex))
+            videoRef.current.removeEventListener('play', () => onPlaying(layerIndex))
 
         }
     }, [])
 
-    return (<video
-        className="media-player"
-        ref={videoRef}
-        src={videoPath}
-        autoPlay
-        muted
-        loop={loop}
+    return (
+        <video
+            style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                backgroundColor: "black",
+                position: "absolute",
+                opacity: opacity ? 1 : 0
+            }}
+            className="media-player"
+            ref={videoRef}
+            src={videoPath}
+            muted
+            loop={loop}
         />
     );
 }

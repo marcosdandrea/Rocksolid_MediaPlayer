@@ -1,5 +1,6 @@
 const windowManager = require("../windowManager")
 const { screen } = require('electron');
+const { globals, CONSTANTS } = require("../globals")
 
 const launchDisplay = (display) => {
     windowManager.launchPlayerWindow(display)
@@ -14,4 +15,7 @@ screen.on('display-removed', (event, oldDisplay) => {
     console.log('Monitor desconectado:', oldDisplay);
 });
 
-screen.getAllDisplays().forEach(launchDisplay)
+if (globals.ENVIRONMENT == CONSTANTS.ENV_PRODUCTION)
+    screen.getAllDisplays().forEach(launchDisplay)
+else
+    launchDisplay(screen.getAllDisplays()[0])

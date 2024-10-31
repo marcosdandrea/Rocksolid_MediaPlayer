@@ -19,7 +19,6 @@ const readConfigFile = async () => {
 const getDisplayPlayList = async (displayID) => {
     try {
         const config = await readConfigFile()
-        console.log (config, config[displayID])
         return config[displayID]
     } catch (err) {
         logger.error(errorCodeToHumanReadable(err.code))

@@ -4,7 +4,7 @@ const { getMediaFileDirectory } = require("../fileManagement")
 
 const bind = (server) => {
 
-    const app_directory = path.join(__dirname, "..", "..", "mediaPlayerApp", "dist")
+    const app_directory = path.join(__dirname, "..", "public")
 
     server.use("/media", express.static(getMediaFileDirectory(__dirname)))
     server.use("/", express.static(path.join(app_directory)))
