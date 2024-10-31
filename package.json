@@ -1,0 +1,24 @@
+{
+  "name": "mediaplayer",
+  "version": "1.0.0",
+  "description": "Simple media player for Raspberry",
+  "main": "index.js",
+  "scripts": {
+    "vite-dev": "npm run dev --prefix ./mediaPlayerApp",
+    "dev": "concurrently \"npm run vite-dev\" \"wait-on http://localhost:5173 && electron . --dev\""
+  },
+  "author": "Marcos D'Andrea",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "electron": "^33.0.2",
+    "electron-builder": "^25.1.8",
+    "express": "^4.21.1",
+    "socket.io": "^4.8.1",
+    "vite": "^5.4.10"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "wait-on": "^8.0.1"
+  }
+}
