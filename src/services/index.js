@@ -12,7 +12,7 @@ const handleOnSocketDisconnects = () => {
 }
 
 const handleOnGetMediaFiles = async (displayID, cb) => {
-    cb(await fileManagement.getMediaFiles(displayID))
+    cb(await fileManagement.getMediaFiles(displayID) || [])
 }
 
 const handleOnGetSystemVersion = async (_, cb) => {

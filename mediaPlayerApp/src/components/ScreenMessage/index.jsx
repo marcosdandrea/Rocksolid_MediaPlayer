@@ -16,7 +16,6 @@ const ScreenMessage = ({ text }) => {
             {
                 text ?
                     <>
-                        <div className="line" />
                         <div className="textBlocks">
                             <Text
                                 fontFamily={fontFamilies.medium}
