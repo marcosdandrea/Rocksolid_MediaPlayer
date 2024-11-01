@@ -1,21 +1,23 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { socketContext } from "../socket";
 
-const useGetSystemVersion = () => {
+const useGetSystemInformation = () => {
 
     const [systemVersion, setSystemVersion] = useState("0.0.0")
     const [mediaFilePath, setMediaFilePath] = useState("")
+    const [ip, setIp] = useState("127.0.0.1")
 
     const {emit, isConnected} = useContext(socketContext)
 
-    const handleOnGetSystemVersion = ({version, path}) => {
+    const handleOnGetSystemVersion = ({version, path, ip}) => {
         setSystemVersion(version)
         setMediaFilePath(path)
+        setIp(ip)
     }
 
     const getSystemVersion = () => {
         emit({
-            channel: "getSystemVersion",
+            channel: "getSystemInformation",
             cb: handleOnGetSystemVersion
         })
     }
@@ -25,6 +27,7 @@ const useGetSystemVersion = () => {
     },[isConnected])
 
     return ({
+        ip,
         systemVersion,
         mediaFilePath,
         getSystemVersion,
@@ -33,4 +36,4 @@ const useGetSystemVersion = () => {
 
 }
  
-export default useGetSystemVersion;
+export default useGetSystemInformation;

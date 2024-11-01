@@ -10,7 +10,7 @@ const MediaManager = () => {
 
     const {displayID} = useGetDisplayID()
     
-    const showScreenIDTime = 1000
+    const showScreenIDTime = 10000
 
     const showScreenIDTimerRef = useRef(null)
     const { isFetching, mediaFiles } = useGetMediaFiles(displayID)

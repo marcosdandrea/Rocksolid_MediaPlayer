@@ -15,7 +15,7 @@ const bind = (httpServer) => {
 
       socket.on("getMediaFiles", services.handleOnGetMediaFiles)
       socket.on("disconnect", services.handleOnSocketDisconnects)
-      socket.on("getSystemVersion", services.handleOnGetSystemVersion)
+      socket.on("getSystemInformation", services.handleOnGetSystemInformation)
     })
     
 }

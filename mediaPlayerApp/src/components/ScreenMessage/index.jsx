@@ -1,5 +1,5 @@
 import useGetDisplayID from "../../hooks/useGetDisplayID";
-import useGetSystemVersion from "../../hooks/useGetSystemVersion";
+import useGetSystemInformation from "../../hooks/useGetSystemInformation";
 import Logo from "../Logo";
 import Text, { fontFamilies } from "../Text";
 import "./style.css"
@@ -7,7 +7,7 @@ import "./style.css"
 const ScreenMessage = ({ text }) => {
     const {displayID} = useGetDisplayID()
 
-    const { systemVersion, mediaFilePath } = useGetSystemVersion()
+    const { systemVersion, mediaFilePath, ip } = useGetSystemInformation()
     const year = new Date().getFullYear()
 
     return (
@@ -36,7 +36,7 @@ const ScreenMessage = ({ text }) => {
                     color={"var(--disabled)"}
                     size={"0.8rem"}
                     fontFamily={fontFamilies.medium}>
-                    {`Proyecciones Digitales ${year} | ${mediaFilePath} | v${systemVersion}`}
+                    {`Prodigi ${year} | ${mediaFilePath} | ${ip} | v${systemVersion}`}
                 </Text>
             </div>
         </div>);
