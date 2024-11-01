@@ -7,7 +7,7 @@ import "./style.css"
 const ScreenMessage = ({ text }) => {
     const {displayID} = useGetDisplayID()
 
-    const { systemVersion } = useGetSystemVersion()
+    const { systemVersion, mediaFilePath } = useGetSystemVersion()
     const year = new Date().getFullYear()
 
     return (
@@ -37,7 +37,7 @@ const ScreenMessage = ({ text }) => {
                     color={"var(--disabled)"}
                     size={"0.8rem"}
                     fontFamily={fontFamilies.medium}>
-                    {`Proyecciones Digitales ${year} | v${systemVersion}`}
+                    {`Proyecciones Digitales ${year} | ${mediaFilePath} | v${systemVersion}`}
                 </Text>
             </div>
         </div>);

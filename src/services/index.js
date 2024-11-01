@@ -16,7 +16,8 @@ const handleOnGetMediaFiles = async (displayID, cb) => {
 }
 
 const handleOnGetSystemVersion = async (_, cb) => {
-    cb(version)
+    const path = fileManagement.getMediaFileDirectory()
+    cb({version, path})
 }
 
 module.exports = {
