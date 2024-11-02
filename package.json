@@ -1,6 +1,6 @@
 {
   "name": "rocksolid",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Simple media player for Raspberry",
   "email": "pesp@proyecciones.net",
   "main": "index.js",
