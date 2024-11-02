@@ -1,0 +1,44 @@
+:root{
+    --cardBackground: #535353;
+    --textColor: #dbdbdb;
+}
+
+
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url("/fonts/Roboto-Regular.ttf");
+  }
+  
+  @font-face {
+    font-family: "Roboto-Medium";
+    src: url("/fonts/Roboto-Medium.ttf");
+  }
+  
+  @font-face {
+    font-family: "Roboto-Bold";
+    src: url("/fonts/Roboto-Bold.ttf");
+  }
+  
+  @font-face {
+    font-family: "Roboto-Italic";
+    src: url("/fonts/Roboto-Italic.ttf");
+  }
+  
+  @font-face {
+    font-family: "Roboto-Light";
+    src: url("/fonts/Roboto-Light.ttf");
+  }
+  
+  @font-face {
+    font-family: "Roboto-Thin";
+    src: url("/fonts/Roboto-Thin.ttf");
+  }
+  
+  :root{
+    --primary-color: #212121;
+    --secondary-color: #373737;
+    --tertiary-color: #4d4d4d;
+    --disabled: #7c7c7c;
+    --background-color: #242424;
+    --text-color: #ececec;
+  }

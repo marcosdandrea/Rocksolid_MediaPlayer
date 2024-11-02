@@ -16,6 +16,11 @@ const handleOnGetMediaFiles = async (displayID, cb) => {
     cb(await fileManagement.getMediaFiles(displayID) || [])
 }
 
+const handlehandleOnGetAllMediaFiles = async (_, cb) => {
+  cb(await fileManagement.getAllMediaFiles() || [])
+
+}
+
 const handleOnGetSystemInformation = async (_, cb) => {
     
     function getLocalIP() {
@@ -42,5 +47,6 @@ module.exports = {
     handleOnSocketConnects,
     handleOnSocketDisconnects,
     handleOnGetMediaFiles,
-    handleOnGetSystemInformation
+    handleOnGetSystemInformation,
+    handlehandleOnGetAllMediaFiles
 }

@@ -11,11 +11,12 @@ const logger = new Logger()
 
 const corsOptions = {
     origin: true, // Permite cualquier dominio en desarrollo; para producción, cambia a un dominio específico.
-    methods: ['GET', 'POST'], // Permite solo estos métodos
+    methods: ['GET', 'POST', 'DELETE'], // Permite solo estos métodos
     allowedHeaders: ['Content-Type', 'Authorization', 'Range'], // Permite solo estos encabezados
     credentials: true // Permite el envío de cookies y credenciales de autenticación
 };
 
+app.use(express.json())
 app.use(cors(corsOptions))
 
 endpoints.bind(app)

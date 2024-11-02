@@ -16,8 +16,8 @@ const launchPlayerWindow = (display) => {
 
     window.setMenu(null)
     const url = globals.ENVIRONMENT == CONSTANTS.ENV_PRODUCTION
-    ? globals.APP_URL
-    : globals.VITE_DEV_SERVER
+    ? globals.MEDIAPLAYER_URL
+    : globals.MEDIAPLAYER_DEV_SERVER
 
     window.loadURL(`${url}/${display.id}`)
 

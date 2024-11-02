@@ -1,0 +1,37 @@
+.logo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mainText{
+    font-size: 3.5rem;
+    font-family: "Mitr-Medium";
+    background: var(--gradient);
+    user-select: none;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle{
+    font-size: 1rem;
+    font-family: "Mitr-Light";
+    user-select: none;
+    text-align: right;
+    margin-top: -1.5rem;
+}
+
+
+@font-face {
+    font-family: "Mitr-Medium";
+    src: url("/fonts/Mitr-Medium.ttf");
+}
+
+@font-face {
+    font-family: "Mitr-Light";
+    src: url("/fonts/Mitr-Light.ttf");
+}
+
+.logo{
+    --gradient: linear-gradient(to left, #0086d3, #a200ff);
+}

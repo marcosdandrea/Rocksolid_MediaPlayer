@@ -1,0 +1,28 @@
+.mediaItem{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--textColor);
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 2px solid var(--textColor);
+}
+
+.mediaItem video{
+    width: 100%;
+}
+
+.mediaContainer .mediaItem{
+    cursor: grab;
+}
+
+.mediaItem .footer{
+    width: 100%;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

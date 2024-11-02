@@ -12,12 +12,13 @@ const entryPoint = async () => {
     logger.info("Starting Screen Manager")
     await import("./screenManager/index.js")
 
-
 }
 
 
 app.whenReady()
     .then(entryPoint)
+
+
 app.on("window-all-closed", () => {
     logger.info("Quit")
     app.quit();

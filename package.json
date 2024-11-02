@@ -5,8 +5,10 @@
   "email": "pesp@proyecciones.net",
   "main": "index.js",
   "scripts": {
-    "vite-dev": "npm run dev --prefix ./mediaPlayerApp",
-    "dev": "concurrently \"npm run vite-dev\" \"wait-on http://localhost:5173 && electron . --dev\"",
+    "mediaPlayerApp-dev": "npm run dev --prefix ./mediaPlayerApp",
+    "commanderApp-dev": "npm run dev --prefix ./commanderApp",
+    "dev": "concurrently \"npm run mediaPlayerApp-dev\" \"npm run commanderApp-dev\" \"wait-on http://localhost:5173 && wait-on http://localhost:5174 && electron . --dev\"",
+    "prod": "electron .",
     "build": "electron-builder",
     "build-linux": "electron-builder --linux --arm64"
   },
@@ -18,14 +20,15 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.21.1",
+    "multer": "^1.4.5-lts.1",
     "socket.io": "^4.8.1",
     "vite": "^5.4.10"
   },
   "devDependencies": {
     "concurrently": "^9.0.1",
-    "wait-on": "^8.0.1",
     "electron": "^33.0.2",
-    "electron-builder": "^25.1.8"
+    "electron-builder": "^25.1.8",
+    "wait-on": "^8.0.1"
   },
   "build": {
     "appId": "com.rocksolid.proyecciones",
