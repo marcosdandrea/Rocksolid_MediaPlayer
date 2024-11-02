@@ -5,7 +5,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-family: "Roboto-Regular"
+  font-family: "Roboto-Regular";
+  cursor: none !important;
 }
 
 body {
