@@ -7,7 +7,7 @@ import "./style.css"
 const ScreenMessage = ({ text }) => {
     const {displayID} = useGetDisplayID()
 
-    const { systemVersion, mediaFilePath, ip } = useGetSystemInformation()
+    const { systemVersion, ip } = useGetSystemInformation()
     const year = new Date().getFullYear()
 
     return (
@@ -30,13 +30,13 @@ const ScreenMessage = ({ text }) => {
                 <Text
                     fontFamily={fontFamilies.medium}
                     size={"1rem"}>
-                    {displayID}
+                    ID {displayID}
                 </Text>
                 <Text
                     color={"var(--disabled)"}
                     size={"0.8rem"}
                     fontFamily={fontFamilies.medium}>
-                    {`Prodigi ${year} | ${mediaFilePath} | ${ip} | v${systemVersion}`}
+                    {`Prodigi ${year} | ${ip} | v${systemVersion}`}
                 </Text>
             </div>
         </div>);

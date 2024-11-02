@@ -4,7 +4,8 @@ const useGetDisplayID = () => {
     const [displayID, setDisplayID] = useState(null) 
     
     useEffect(() => {
-        setDisplayID(window.location.pathname.replaceAll("/", ""))
+        const url = window.location.href.split("/")
+        setDisplayID(url.pop())
     }, [])
 
     return {displayID}

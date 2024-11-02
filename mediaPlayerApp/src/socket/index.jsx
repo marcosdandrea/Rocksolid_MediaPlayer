@@ -19,6 +19,10 @@ const Socket = ({ children }) => {
         setIsConnected(false)
     })
 
+    socket.on("reloadMediaPlayer", ()=>{
+        window.location.reload()
+    })
+
     const emit = ({ channel, value, cb }) => {
         if (!socket.connected) return
         socket.emit(channel, value, cb)

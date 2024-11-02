@@ -25,29 +25,29 @@ const VideoLayers = ({ mediaFiles }) => {
 
     useEffect(() => {
         if (mediaFiles.length === 0 || layer0MediaToPlay) return
-        setLayer0MediaToPlay(mediaFiles[currentPlayIndex])
+        setLayer0MediaToPlay({media: mediaFiles[currentPlayIndex], rand: performance.now()})
     }, [mediaFiles])
 
     useEffect(() => {
         const file = mediaFiles[currentPlayIndex]
-
+        
         if (layer0State == layerStates.playing) {
-            setLayer1MediaToPlay(file)
+            resetLayer(1)
+            setLayer1MediaToPlay({media: mediaFiles[currentPlayIndex], rand: performance.now()})
         }
         else {
             if (layer0MediaToPlay == file) return
-            setLayer0MediaToPlay(file)
+            setLayer0MediaToPlay({media: mediaFiles[currentPlayIndex], rand: performance.now()})
         }
 
     }, [currentPlayIndex])
 
     const handleOnMediaEnd = (layerIndex) => {
 
-        if (layerIndex == 0)
+        if (layerIndex == 0) 
             setLayer0State(layerStates.ended)
-        else
+        else 
             setLayer1State(layerStates.ended)
-
 
     }
 
@@ -70,11 +70,21 @@ const VideoLayers = ({ mediaFiles }) => {
             changeIndex()
     }
 
+    const resetLayer = (layerIndex) => {
+        if (layerIndex == 0){
+            setLayer0State(layerStates.ended)
+            setLayer0MediaToPlay(null)
+        }
+        else{
+            setLayer1State(layerStates.ended)
+            setLayer1MediaToPlay(null)
+        }
+    }
+
     return (
         <div className="videoLayer">
             <MediaPlayer
                 layerIndex={0}
-                opacity={layer0State == layerStates.playing || mediaFiles.length == 1}
                 canPlay={layer0State == layerStates.loaded && layer1State == layerStates.ended}
                 onMediaEnd={handleOnMediaEnd}
                 onMediaLoaded={handleOnMediaLoaded}
@@ -83,7 +93,6 @@ const VideoLayers = ({ mediaFiles }) => {
                 file={layer0MediaToPlay} />
             <MediaPlayer
                 layerIndex={1}
-                opacity={layer1State == layerStates.playing && mediaFiles.length > 1}
                 canPlay={layer1State == layerStates.loaded && layer0State == layerStates.ended && mediaFiles.length > 1}
                 onMediaEnd={handleOnMediaEnd}
                 onMediaLoaded={handleOnMediaLoaded}
