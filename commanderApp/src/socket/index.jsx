@@ -4,7 +4,8 @@ import useSocketServices from "../hooks/useSocketServices";
 
 export const socketContext = createContext()
 
-const socket = socketIO("http://localhost:3000")
+const hostname = window.location.hostname
+const socket = socketIO(`http://${hostname}:3000`)
 
 const Socket = ({ children }) => {
     const [isConnected, setIsConnected] = useState()
