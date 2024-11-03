@@ -44,7 +44,7 @@ const getMediaFiles = async (displayID) => {
 const getAllMediaFiles = async () => {
     try {
         const files = await fs.readdir(getMediaFileDirectory())
-        return files.filter(file => file.endsWith('.webm'))
+        return files.filter(file => file.endsWith('.webm') || file.endsWith('.mp4'))
     } catch (err) {
         console.error(err)
         logger.error(errorCodeToHumanReadable(err.code))
@@ -85,10 +85,10 @@ const storage = multer.diskStorage({
 
 // Filtro para aceptar solo archivos .webm
 const fileFilter = (req, file, cb) => {
-    if (file.mimetype === 'video/webm') {
+    if (file.mimetype === 'video/webm' || file.mimetype === 'video/mp4') {
         cb(null, true); // Acepta el archivo
     } else {
-        cb(new Error('Solo se permiten archivos en formato .webm'), false); // Rechaza el archivo
+        cb(new Error('Solo se permiten archivos en formato .webm o .mp4'), false); // Rechaza el archivo
     }
 };
 
