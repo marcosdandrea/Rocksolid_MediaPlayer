@@ -2,17 +2,17 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { socketContext } from "../socket";
 
 const useGetSystemInformation = () => {
-
+    const retryRef = useRef(null)
     const [systemVersion, setSystemVersion] = useState("0.0.0")
-    const [mediaFilePath, setMediaFilePath] = useState("")
     const [ip, setIp] = useState("127.0.0.1")
 
-    const {emit, isConnected} = useContext(socketContext)
+    const { emit, isConnected } = useContext(socketContext)
 
-    const handleOnGetSystemVersion = ({version, path, ip}) => {
+    const handleOnGetSystemVersion = ({ version, path, ip }) => {
+        if (!ip || !version) return
         setSystemVersion(version)
-        setMediaFilePath(path)
         setIp(ip)
+        clearTimeout(retryRef.current)
     }
 
     const getSystemVersion = () => {
@@ -22,18 +22,25 @@ const useGetSystemInformation = () => {
         })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
+        if (!isConnected) return
         getSystemVersion()
-    },[isConnected])
+        retryRef.current = setInterval(() => {
+            getSystemVersion()
+        }, 5000)
+
+        return () => {
+            clearInterval(retryRef.current)
+        }
+    }, [isConnected])
 
     return ({
         ip,
         systemVersion,
-        mediaFilePath,
         getSystemVersion,
     })
 
 
 }
- 
+
 export default useGetSystemInformation;

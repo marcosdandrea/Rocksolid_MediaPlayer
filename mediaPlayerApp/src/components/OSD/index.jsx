@@ -4,7 +4,7 @@ import "./style.css"
 const OSD = ({text}) => {
     return ( 
     <div className="osd">
-        <div className="messsage">
+        <div className="message">
             <Text>
                 {text}
             </Text>

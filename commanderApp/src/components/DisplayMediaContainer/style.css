@@ -4,4 +4,6 @@
     row-gap: 1rem;
     user-select: none;
     height: 100%;
+    overflow-y: auto;
+    padding: 0.5rem;
 }

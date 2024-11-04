@@ -9,7 +9,9 @@
 }
 
 .message{
-    width: 30%;
+    padding: 1rem;
+    border-radius: 5px;
+    width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
