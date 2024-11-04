@@ -1,6 +1,6 @@
 import "./app.css"
 import MediaManager from "./components/MediaManager"
-import ScreenMessage from "./components/ScreenMessage"
+import ShowIPOSD from "./components/ShowIPOSD"
 import Socket from "./socket"
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (
     <Socket>
       <div className="app">
-        <MediaManager/>
+        <MediaManager />
       </div>
     </Socket>
   )

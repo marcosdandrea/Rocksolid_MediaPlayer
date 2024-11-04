@@ -1,0 +1,17 @@
+.osd{
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-items: center;
+    position: absolute;
+    z-index: 100;   
+    margin-bottom: 1rem;
+}
+
+.message{
+    width: 30%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -32,7 +32,7 @@ const MediaExplorer = () => {
         <div>
             <input 
                 type="file" 
-                accept=".webm .mp4"
+                accept={".webm, .mp4"}
                 onChange={handleOnPostMediafile}/>
         </div>
         <div className="fileList">

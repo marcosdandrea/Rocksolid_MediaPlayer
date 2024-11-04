@@ -5,11 +5,12 @@ import Text from "../Text";
 import ScreenMessage from "../ScreenMessage";
 import VideoLayers from "../VideoLayer";
 import useGetDisplayID from "../../hooks/useGetDisplayID";
+import ShowIPOSD from "../ShowIPOSD";
 
 const MediaManager = () => {
 
-    const {displayID} = useGetDisplayID()
-    
+    const { displayID } = useGetDisplayID()
+
     const showScreenIDTime = 2000
 
     const showScreenIDTimerRef = useRef(null)
@@ -36,15 +37,18 @@ const MediaManager = () => {
         return (<ScreenMessage />)
 
     return (
-        <div className="mediaManager">
-            {
-                isFetching
-                    ? <Text>Cargando...</Text>
-                    : mediaFiles.length > 0
-                        ? <VideoLayers mediaFiles={mediaFiles} />
-                        : <ScreenMessage text={`No hay videos para reproducir`} />
-            }
-        </div>);
+        <>
+            <ShowIPOSD timeout={20000} />
+            <div className="mediaManager">
+                {
+                    isFetching
+                        ? <Text>Cargando...</Text>
+                        : mediaFiles.length > 0
+                            ? <VideoLayers mediaFiles={mediaFiles} />
+                            : <ScreenMessage text={`No hay videos para reproducir`} />
+                }
+            </div>
+        </>);
 }
 
 export default MediaManager;

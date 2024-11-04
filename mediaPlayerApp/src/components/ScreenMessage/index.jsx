@@ -1,6 +1,7 @@
 import useGetDisplayID from "../../hooks/useGetDisplayID";
 import useGetSystemInformation from "../../hooks/useGetSystemInformation";
 import Logo from "../Logo";
+import ShowIPOSD from "../ShowIPOSD";
 import Text, { fontFamilies } from "../Text";
 import "./style.css"
 
@@ -26,7 +27,8 @@ const ScreenMessage = ({ text }) => {
                     </>
                     : <></>
             }
-            <div className="footer">
+            <ShowIPOSD />
+           {/*  <div className="footer">
                 <Text
                     fontFamily={fontFamilies.medium}
                     size={"1rem"}>
@@ -38,7 +40,7 @@ const ScreenMessage = ({ text }) => {
                     fontFamily={fontFamilies.medium}>
                     {`Prodigi ${year} | ${ip} | v${systemVersion}`}
                 </Text>
-            </div>
+            </div> */}
         </div>);
 }
 
